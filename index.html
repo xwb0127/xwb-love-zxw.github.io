@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致我最爱的人-小威</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        .heart {
+            width: 150px;
+            height: 150px;
+            background-color: #ff4757;
+            position: relative;
+            transform: rotate(45deg);
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 50px;
+            cursor: pointer;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 150px;
+            height: 150px;
+            background-color: #ff4757;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: -75px;
+        }
+        @keyframes heartbeat {
+            0% { transform: rotate(45deg) scale(1); }
+            25% { transform: rotate(45deg) scale(1.1); }
+            50% { transform: rotate(45deg) scale(1); }
+            75% { transform: rotate(45deg) scale(1.1); }
+            100% { transform: rotate(45deg) scale(1); }
+        }
+        .text {
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-title {
+            color: #ff4757;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .confession {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        .btn-yes {
+            background-color: #ff4757;
+            color: #fff;
+        }
+        .btn-yes:hover {
+            background-color: #e03140;
+            transform: scale(1.05);
+        }
+        .btn-no {
+            background-color: #eee;
+            color: #666;
+        }
+        .btn-no:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" onclick="openModal()"></div>
+    <div class="text">点击我的心，听听我的告白</div>
+
+    <!-- 告白弹窗 -->
+    <div class="modal" id="confessionModal">
+        <div class="modal-content">
+            <h2 class="modal-title">致小威</h2>
+            <div class="confession">
+                从遇见你的那天起，我的世界就亮了起来。<br>
+                喜欢你的热诚，让我那颗原本已经封闭的心再次跳动<br>
+                喜欢你的气息，让我待在你身边每一刻都很安稳，<br>
+                往后余生，想和你一起经历更多美好，<br>
+                小威先生，我喜欢你，你愿意做我男朋友吗？</br>
+            </div>
+            <button class="btn btn-yes" onclick="alert('太好了！往后余生，皆是你～')">我愿意</button>
+            <button class="btn btn-no" onclick="alert('没关系，我会继续努力，直到你点头的那天～')">再想想</button>
+        </div>
+    </div>
+
+    <script>
+        // 打开告白弹窗
+        function openModal() {
+            document.getElementById('confessionModal').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
